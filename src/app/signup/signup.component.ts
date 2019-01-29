@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+//import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @Component({
   selector: 'app-signup',
@@ -8,30 +8,35 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class SignupComponent {
 
-  private camera : Camera;
+  public personal : number;
 
-  constructor(private _camera: Camera){
-    this.camera = _camera;
+  public count : number;
+
+  public profile : string;
+
+  constructor(){
+    this.personal = 1;
+    this.profile = 'Personal';
+    this.count = 0;
    }
 
-  const options: CameraOptions = {
-  quality: 100,
-  destinationType: this.camera.DestinationType.FILE_URI,
-  encodingType: this.camera.EncodingType.JPEG,
-  mediaType: this.camera.MediaType.PICTURE
-  }
 
-  // getPictureNow:(void) {
-  // this.camera.getPicture(options).then(
-  //   (imageData) => {
-  //   // imageData is either a base64 encoded string or a file URI
-  //   // If it's base64 (DATA_URL):
-  //   let base64Image = 'data:image/jpeg;base64,' + imageData;
-  //   }, (err) => {
-  //   // Handle error
-  //     }
-  //   );
-  // }
+
+   segmentChanged(ev: any){
+     if(this.count==1){
+       if(this.personal===1){
+         this.personal = 0;
+       }
+       else{
+         this.personal = 1;
+       }
+    }
+    else{
+      this.count = 1;
+    }
+   }
+
+
 
 
 }

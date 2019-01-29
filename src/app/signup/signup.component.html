@@ -3,19 +3,48 @@
     <ion-title>
       Sign Up
     </ion-title>
+    <ion-back-button text="Back" icon="add"></ion-back-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-<ion-button expand="block" padding (click)="openGallery()">Upload Image</ion-button>
+<ion-content fullscreen>
+
+  <!-- Segment with secondary color -->
+  <ion-segment (ionChange)="segmentChanged($event)" color="primary">
+    <ion-segment-button value="Work" checked>
+      <ion-label>Work</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Personal" >
+      <ion-label>Personal</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+<div *ngIf="personal">
   <ion-item>
-    <ion-label position="floating">First Name</ion-label>
+    <ion-label position="stacked">First Name</ion-label>
     <ion-input></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Last Name</ion-label>
+  <ion-label position="stacked">Last Name</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+</div>
+<div *ngIf="!personal">
+
+  <ion-item>
+    <ion-label position="stacked">What do your friends call you?</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Facebook profile link:</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Instagram profile link:</ion-label>
     <ion-input></ion-input>
   </ion-item>
 
+ </div>
+
 </ion-content>
-<p> This is here now</p>
