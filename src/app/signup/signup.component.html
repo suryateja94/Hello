@@ -11,40 +11,41 @@
 
   <!-- Segment with secondary color -->
   <ion-segment (ionChange)="segmentChanged($event)" color="primary">
-    <ion-segment-button value="Work" checked>
+    <ion-segment-button value="Work">
       <ion-label>Work</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="Personal" >
+    <ion-segment-button value="Personal" checked >
       <ion-label>Personal</ion-label>
     </ion-segment-button>
   </ion-segment>
 
-<div *ngIf="personal">
+<div *ngIf="!personal">
   <ion-item>
     <ion-label position="stacked">First Name</ion-label>
-    <ion-input></ion-input>
+    <ion-input [ngModel]="work_profile.first_name" ></ion-input>
   </ion-item>
   <ion-item>
   <ion-label position="stacked">Last Name</ion-label>
-  <ion-input></ion-input>
+  <ion-input [ngModel]="work_profile.last_name"></ion-input>
 </ion-item>
+<ion-button (click)="saveWorkProfile()" expand="block" padding>Save</ion-button>
 
 </div>
-<div *ngIf="!personal">
+<div *ngIf="personal">
 
   <ion-item>
     <ion-label position="stacked">What do your friends call you?</ion-label>
-    <ion-input></ion-input>
+    <ion-input  [ngModel]="personal_profile.first_name" ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Facebook profile link:</ion-label>
-    <ion-input></ion-input>
+    <ion-input  [ngModel]="personal_profile.fb_handle" ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Instagram profile link:</ion-label>
-    <ion-input></ion-input>
+    <ion-label position="stacked" >Instagram profile link:</ion-label>
+    <ion-input [ngModel]="personal_profile.in_handle" ></ion-input>
   </ion-item>
-
+<ion-button (click)="savePeronalProfile()" expand="block" padding>Save</ion-button>
  </div>
 
 </ion-content>
